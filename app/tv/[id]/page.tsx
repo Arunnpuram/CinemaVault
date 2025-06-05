@@ -3,6 +3,7 @@ import Link from "next/link"
 import { Star, Calendar, Film, ArrowLeft, Play, Tv } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { getTVShowDetails, getImageUrl, getBackdropUrl } from "@/lib/tmdb"
+import StreamingAvailabilitySection from "@/components/streaming-availability"
 
 export default async function TVShowDetailPage({ params }: { params: { id: string } }) {
   const showId = Number.parseInt(params.id)
@@ -200,6 +201,11 @@ export default async function TVShowDetailPage({ params }: { params: { id: strin
             </div>
           </section>
         )}
+
+        {/* Streaming Availability Section */}
+        <section className="container mx-auto px-6 pb-16">
+          <StreamingAvailabilitySection id={showId} type="tv" title={show.name} />
+        </section>
 
         <footer className="bg-black/50 backdrop-blur-xl border-t border-white/10 py-8">
           <div className="container mx-auto px-6 text-center text-gray-400">

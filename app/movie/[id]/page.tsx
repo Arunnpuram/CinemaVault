@@ -3,6 +3,7 @@ import Link from "next/link"
 import { Star, Clock, Calendar, Film, ArrowLeft, Play } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { getMovieDetails, getImageUrl, getBackdropUrl } from "@/lib/tmdb"
+import StreamingAvailabilitySection from "@/components/streaming-availability"
 
 export default async function MovieDetailPage({ params }: { params: { id: string } }) {
   const movieId = Number.parseInt(params.id)
@@ -185,6 +186,11 @@ export default async function MovieDetailPage({ params }: { params: { id: string
             </div>
           </section>
         )}
+
+        {/* Streaming Availability Section */}
+        <section className="container mx-auto px-6 pb-16">
+          <StreamingAvailabilitySection id={movieId} type="movie" title={movie.title} />
+        </section>
 
         <footer className="bg-black/50 backdrop-blur-xl border-t border-white/10 py-8">
           <div className="container mx-auto px-6 text-center text-gray-400">
